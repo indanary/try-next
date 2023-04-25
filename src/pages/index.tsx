@@ -1,8 +1,15 @@
 import Link from "next/link"
+import {useRouter} from "next/router"
 
 interface HomeProps {}
 
 const Home: React.FC<HomeProps> = ({}) => {
+	const router = useRouter()
+
+	const handleClick = () => {
+		router.push("/product")
+	}
+
 	return (
 		<>
 			<div>Home</div>
@@ -12,6 +19,7 @@ const Home: React.FC<HomeProps> = ({}) => {
 			<Link href="/product" legacyBehavior>
 				<a>Products</a>
 			</Link>
+			<button onClick={handleClick}>Place Order</button>
 		</>
 	)
 }
