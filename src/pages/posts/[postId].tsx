@@ -1,3 +1,4 @@
+import {useRouter} from "next/router"
 import Post from "../../../components/post"
 
 interface PostDetailProps {
@@ -5,6 +6,12 @@ interface PostDetailProps {
 }
 
 const PostDetail: React.FC<PostDetailProps> = ({post}) => {
+	const router = useRouter()
+
+	if (router.isFallback) {
+		return <h1>Loading...</h1>
+	}
+
 	return (
 		<>
 			<Post post={post} />
@@ -39,6 +46,12 @@ export async function getStaticProps(context: any) {
 		`https://jsonplaceholder.typicode.com/posts/${params.postId}`,
 	)
 	const data = await response.json()
+
+	if (!data.id) {
+		return {
+			notFound: true,
+		}
+	}
 
 	return {
 		props: {
