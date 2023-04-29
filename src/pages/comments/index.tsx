@@ -22,6 +22,16 @@ const CommentsPage: React.FC<CommentsPageProps> = ({}) => {
 			},
 		})
 		const data = await response.json()
+		console.log(data)
+	}
+
+	const deleteComment = async (commentId: string) => {
+		const response = await fetch(`/api/comments/${commentId}`, {
+			method: "DELETE",
+		})
+		const data = await response.json()
+		console.log(data)
+		fetchComments()
 	}
 
 	return (
@@ -38,6 +48,9 @@ const CommentsPage: React.FC<CommentsPageProps> = ({}) => {
 			{comments.map((comment: any) => (
 				<div key={comment.id}>
 					{comment.id} {comment.text}
+					<button onClick={() => deleteComment(comment.id)}>
+						Delete Comment
+					</button>
 				</div>
 			))}
 		</>
