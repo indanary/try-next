@@ -1,7 +1,9 @@
+import styles from "../styles/About.module.css"
+
 interface AboutProps {}
 
 const About: React.FC<AboutProps> = ({}) => {
-	return <button className="btn btn-primary">Primary</button>
+	return <div className={styles.highlight}>About Page</div>
 }
 
 export default About
