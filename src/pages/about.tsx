@@ -1,8 +1,15 @@
 import { ReactNode } from "react"
+import Head from "next/head"
 import Footer from "../../components/Footer"
 
 const About = () => {
-	return <h1 className="content">About</h1>
+	return <>
+    <Head>
+      <title>About Next</title>
+      <meta name="description" content="Trying Next Js" />
+    </Head>
+    <h1 className="content">About</h1>
+  </>
 }
 
 export default About
