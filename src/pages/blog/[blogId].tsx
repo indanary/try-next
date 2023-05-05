@@ -22,6 +22,12 @@ const Blog: React.FC<BlogProps> = ({article}) => {
 export default Blog
 
 export async function getServerSideProps() {
+	const user = process.env.DB_USER
+	const password = process.env.DB_PASSWORD
+
+	console.log(user)
+	console.log(password)
+
 	return {
 		props: {
 			article: {
